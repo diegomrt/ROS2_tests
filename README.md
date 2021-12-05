@@ -19,11 +19,22 @@ ros2 action list
 ```
 - Buscar paquetes instalados: `ros2 pkg list | grep paquete_en_busqueda`
 
+## Creación de paquetes
+- Siempre en el directorio src del workspace: `ros2 pkg create --build-type ament_python nombredelpaquete`
+
 ## COLCON (trabajo con workspaces en ROS2)
 - Documentación oficial en https://colcon.readthedocs.io/en/released/
 - Instalación colcon y extensiones: `sudo apt install python3-colcon-common-extensions`
 - Para hacer source de un colcon_ws: `source nombre_ws/install/setup.bash`
+### Build con COLCON
+- Instrucciones en https://docs.ros.org/en/foxy/Tutorials/Colcon-Tutorial.html
+- Uso básico: `colcon build --symlink-install`
 
 ## Instalación de paquetes básicos
 - rqt y sus plugins: `sudo apt install ros-foxy-rqt*`
 - gazebo (11) y sus plugins: `sudo apt-get install ros-foxy-gazebo-*`
+
+## Paquetes de ejemplo:
+### Simulación del turtlebot 3
+- Info e instalación en https://emanual.robotis.com/docs/en/platform/turtlebot3/simulation/#gazebo-simulation
+
