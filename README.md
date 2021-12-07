@@ -39,20 +39,28 @@ ros2 action list
 
 ## Instalación de paquetes básicos:
 - rqt y sus plugins: `sudo apt install ros-foxy-rqt*`
-    - Ejecutar con ´ros2 run rviz2 rviz2´
-    - También con ´rviz2´ directamente
+    - Ejecutar con `ros2 run rviz2 rviz2`
+    - También con `rviz2` directamente
 
 ## Simuladores 
-### Gazebo
-- gazebo (11) y sus plugins: `sudo apt-get install ros-foxy-gazebo-*`
-    -Ejecución básica de test: ´ros2 launch gazebo_ros gazebo.launch.py´
+### Gazebo classic
+- gazebo classic (11) y sus plugins: `sudo apt-get install ros-foxy-gazebo-*`
+    - Ejecución básica de test: ´ros2 launch gazebo_ros gazebo.launch.py´. Funciona
+### Ignition Gazebo
+- Varias "releases" disponibles: https://ignitionrobotics.org/docs/all/releases
+    - Instalo "Citadel", ya que la última LTS "Fortress" es de septiembre de 2021 y quizás no esté madura
+- Instalación (independiente de ROS) en https://ignitionrobotics.org/docs/citadel/install_ubuntu
+    - Test con `ign gazebo shapes.sdf`. OK!
+- Integración con ROS2 descrita en https://ignitionrobotics.org/docs/citadel/ros2_integration 
+    - Instalación desde binarios con `sudo apt install ros-foxy-ros-ign*`
+    - Test básico (pendiente).   
 ### Webots
 - Paquete de instalación para ROS2: https://github.com/cyberbotics/webots_ros2
     - Instalación con ´sudo apt-get install ros-foxy-webots-ros2´
     - La primera vez pide descargar y ejecutar webots R2021b
     - Ejecución básica de test: ´ros2 launch webots_ros2_universal_robot multirobot_launch.py´
 
-## Paquetes de ejemplo:
+## Paquetes de ejemplo
 ### Simulación del turtlebot 3
 - Info e instalación en https://emanual.robotis.com/docs/en/platform/turtlebot3/simulation/#gazebo-simulation
 
