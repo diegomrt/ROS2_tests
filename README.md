@@ -38,9 +38,13 @@ ros2 action list
 - Uso básico: `colcon build --symlink-install`
 
 ## Instalación de paquetes básicos:
-- rqt y sus plugins: `sudo apt install ros-foxy-rqt*`
+- RQT y sus plugins: `sudo apt install ros-foxy-rqt*`
     - Ejecutar con `ros2 run rviz2 rviz2`
     - También con `rviz2` directamente
+- NAV2: El sucesor del navigation stack de ROS1: https://navigation.ros.org/getting_started/index.html
+    - Instalar con `sudo apt install ros-foxy-navigation2` y `sudo apt install ros-foxy-nav2-bringup`
+- CARTOGRAPHER (SLAM): https://index.ros.org/r/cartographer_ros/
+    - Instalar con `sudo apt install ros-foxy-cartographer` y `sudo apt install ros-foxy-cartographer-ros`  
 
 ## Simuladores 
 ### Gazebo classic
@@ -56,11 +60,21 @@ ros2 action list
     - Test básico (pendiente).   
 ### Webots
 - Paquete de instalación para ROS2: https://github.com/cyberbotics/webots_ros2
-    - Instalación con ´sudo apt-get install ros-foxy-webots-ros2´
+    - Instalación con `sudo apt-get install ros-foxy-webots-ros2`
     - La primera vez pide descargar y ejecutar webots R2021b
-    - Ejecución básica de test: ´ros2 launch webots_ros2_universal_robot multirobot_launch.py´
+    - Ejecución básica de test: `ros2 launch webots_ros2_universal_robot multirobot_launch.py`
 
 ## Paquetes de ejemplo
 ### Simulación del turtlebot 3
 - Info e instalación en https://emanual.robotis.com/docs/en/platform/turtlebot3/simulation/#gazebo-simulation
-
+- Simulación: 
+    - GAZEBO: Instalar paquetes simulación + `ros2 launch turtlebot3_gazebo turtlebot3_world.launch.py`
+    - WEBOTS: Instrucciones en https://github.com/cyberbotics/webots_ros2/wiki/Navigate-TurtleBot3
+        - Lanzar simulación con `ros2 launch webots_ros2_turtlebot robot_launch.py`
+        - Mover robot básico con `ros2 topic pub -t 3 /cmd_vel geometry_msgs/msg/Twist '{linear: {x: 1.0, y: 0.0, z: 0.0}, angular: {x: 0.0, y: 0.0, z: 0}}'
+### Simulación del manipulador UR5e
+- Ignition Gazebo: repo en https://github.com/gezp/universal_robot_ign
+    - Problema: es para RO2 Galactic, no compila bien (error con ignition_transport10)   
+- Webots: https://github.com/cyberbotics/webots_ros2/wiki/Example-Universal-Robots
+    -  
+    -     
