@@ -63,6 +63,7 @@ ros2 action list
     - Instalación con `sudo apt-get install ros-foxy-webots-ros2`
     - La primera vez pide descargar y ejecutar webots R2021b
     - Ejecución básica de test: `ros2 launch webots_ros2_universal_robot multirobot_launch.py`
+- Listado de robots incluidos en https://cyberbotics.com/doc/guide/robots 
 
 ## Paquetes de ejemplo
 ### Simulación del turtlebot 3
@@ -71,10 +72,16 @@ ros2 action list
     - GAZEBO: Instalar paquetes simulación + `ros2 launch turtlebot3_gazebo turtlebot3_world.launch.py`
     - WEBOTS: Instrucciones en https://github.com/cyberbotics/webots_ros2/wiki/Navigate-TurtleBot3
         - Lanzar simulación con `ros2 launch webots_ros2_turtlebot robot_launch.py`
-        - Mover robot básico con `ros2 topic pub -t 3 /cmd_vel geometry_msgs/msg/Twist '{linear: {x: 1.0, y: 0.0, z: 0.0}, angular: {x: 0.0, y: 0.0, z: 0}}'
+        - Mover robot básico con `ros2 topic pub -t 3 /cmd_vel geometry_msgs/msg/Twist '{linear: {x: 1.0, y: 0.0, z: 0.0}, angular: {x: 0.0, y: 0.0, z: 0}}`
+## Robótica industrial. MoveIt2
 ### Simulación del manipulador UR5e
-- Ignition Gazebo: repo en https://github.com/gezp/universal_robot_ign
-    - Problema: es para RO2 Galactic, no compila bien (error con ignition_transport10)   
-- Webots: https://github.com/cyberbotics/webots_ros2/wiki/Example-Universal-Robots
-    -  
-    -     
+#### UR5e en Ignition Gazebo: 
+Repo en https://github.com/gezp/universal_robot_ign
+    - Problema: es para RO2 Galactic, no compila bien (error con ignition_transport10)
+    - Solución: mejor usar webots
+#### UR5e en Webots
+Repo en el github del propio desarrollador de Webots https://github.com/cyberbotics/webots_ros2/wiki/Example-Universal-Robots
+1. UR5e en Webots sin RViz ni MoveIt: `ros2 launch webots_ros2_universal_robot robot_launch.py`
+    - Se lanzan 5 nodos: /UR5e, /controller_manager, /robot_state_publisher, /jount_state_broadcaster, /joint_trajectory_controller
+2. UR5e en Webots con RViz y MoveIt2: `ros2 launch webots_ros2_universal_robot moveit_demo_launch.py`
+3. UR5e + ABB en Webots: `ros2 launch webots_ros2_universal_robot multirobot_launch.py`
