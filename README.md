@@ -10,6 +10,9 @@ Disponible en
 - FOXY: https://docs.ros.org/en/foxy/index.html
 - GALACTIC: https://docs.ros.org/en/galactic/index.html
 
+Instalación desde binarios Debian en Ubuntu 20.04:
+- ROS2 FOXY: https://docs.ros.org/en/foxy/Installation/Ubuntu-Install-Debians.html
+
 ## Test básicos tras instalación
 Extraídos de https://docs.ros.org/en/foxy/Installation/Ubuntu-Install-Debians.html
 - `ros2 run demo_nodes_cpp talker`
@@ -61,8 +64,8 @@ ros2 action list
 ### Webots
 - Paquete de instalación para ROS2: https://github.com/cyberbotics/webots_ros2
     - Instalación con `sudo apt-get install ros-foxy-webots-ros2`
-    - La primera vez pide descargar y ejecutar webots R2021b
     - Ejecución básica de test: `ros2 launch webots_ros2_universal_robot multirobot_launch.py`
+        - La primera vez pide descargar y ejecutar webots R2022a (octubre 2022)
 - Listado de robots incluidos en https://cyberbotics.com/doc/guide/robots 
 
 ## Paquetes de ejemplo
