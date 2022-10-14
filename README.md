@@ -3,21 +3,24 @@ Pruebas, comandos básicos y ejemplos de ROS2 Galactic para Ubuntu 20.04 focal.
 
 *Nota*: En diciembre de 2021 hay dos versiones soportadas: ROS2 FOXY y ROS2 GALACTIC. Los ejemplos son para FOXY (tiene más paquetes por el momento)
 
-*Nota 2*: He tenido problemas al tener instalados ROS1 Noetic y ROS2 Foxy en la misma máquina (tipo symbol lookup error: hasta en las demos). Se han solucionado desinstalando Noetic
+*Nota 2*: Update octubre 2022: instalo Ubuntu 22.04 y ROS2 Humble (LTS hasta 2027)
 
 ## Documentación oficial
 Disponible en
 - FOXY: https://docs.ros.org/en/foxy/index.html
 - GALACTIC: https://docs.ros.org/en/galactic/index.html
+- HUMBLE: https://docs.ros.org/en/humble/Releases/Release-Humble-Hawksbill.html
 
-Instalación desde binarios Debian en Ubuntu 20.04:
-- ROS2 FOXY: https://docs.ros.org/en/foxy/Installation/Ubuntu-Install-Debians.html
+Instalación desde binarios Debian :
+- ROS2 FOXY (en Ubuntu 20.04): https://docs.ros.org/en/foxy/Installation/Ubuntu-Install-Debians.html
+- ROS2 HUMBLE (en Ubuntu 22.04): https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debians.htmlsud
 
 ## Test básicos tras instalación
 Extraídos de https://docs.ros.org/en/foxy/Installation/Ubuntu-Install-Debians.html
 - `ros2 run demo_nodes_cpp talker`
 - `ros2 run demo_nodes_py listener`
-
+Tutoriales (HUMBLE)
+- https://docs.ros.org/en/humble/Tutorials.html
 ## Comandos básicos
 - Ejecutables de un paquete:  `ros2 run turtlesim turtle_teleop_key`
 - Listar nodos, topics, acciones y servicios:
@@ -40,20 +43,21 @@ ros2 action list
 - Instrucciones en https://docs.ros.org/en/foxy/Tutorials/Colcon-Tutorial.html
 - Uso básico: `colcon build --symlink-install`
 
-## Instalación de paquetes básicos:
-- RQT y sus plugins: `sudo apt install ros-foxy-rqt*`
+## Instalación de paquetes básicos (ROS2 HUMBLE):
+- RVIZ:
     - Ejecutar con `ros2 run rviz2 rviz2`
     - También con `rviz2` directamente
+- RQT y sus plugins: `sudo apt install ros-humble-rqt*`
 - NAV2: El sucesor del navigation stack de ROS1: https://navigation.ros.org/getting_started/index.html
-    - Instalar con `sudo apt install ros-foxy-navigation2` y `sudo apt install ros-foxy-nav2-bringup`
+    - Instalar con `sudo apt install ros-humble-navigation2` y `sudo apt install ros-foxy-nav2-bringup`
 - CARTOGRAPHER (SLAM): https://index.ros.org/r/cartographer_ros/
-    - Instalar con `sudo apt install ros-foxy-cartographer` y `sudo apt install ros-foxy-cartographer-ros`  
+    - Instalar con `sudo apt install ros-humble-cartographer` y `sudo apt install ros-humble-cartographer-ros`  
 
-## Simuladores 
+## Simuladores (ROS2 HUMBLE)
 ### Gazebo classic
-- gazebo classic (11) y sus plugins: `sudo apt-get install ros-foxy-gazebo-*`
+- gazebo classic (11) y sus plugins: `sudo apt-get install ros-humble-gazebo-*`
     - Ejecución básica de test: ´ros2 launch gazebo_ros gazebo.launch.py´. Funciona
-### Ignition Gazebo
+### Ignition Gazebo (pendiente revisión para HUMBLE)
 - Varias "releases" disponibles: https://ignitionrobotics.org/docs/all/releases
     - Instalo "Citadel", ya que la última LTS "Fortress" es de septiembre de 2021 y quizás no esté madura
 - Instalación (independiente de ROS) en https://ignitionrobotics.org/docs/citadel/install_ubuntu
@@ -63,11 +67,11 @@ ros2 action list
     - Test básico (pendiente).   
 ### Webots
 - Paquete de instalación para ROS2: https://github.com/cyberbotics/webots_ros2
-    - Instalación con `sudo apt-get install ros-foxy-webots-ros2`
+    - Instalación con `sudo apt-get install ros-humble-webots-ros2`
     - Ejecución básica de test: `ros2 launch webots_ros2_universal_robot multirobot_launch.py`
         - La primera vez pide descargar y ejecutar webots R2022a (octubre 2022)
 - Listado de robots incluidos en https://cyberbotics.com/doc/guide/robots 
-- Tutorial creación de paquete para la simulacion (FOXY): https://docs.ros.org/en/foxy/Tutorials/Advanced/Simulators/Webots.html 
+- Tutorial creación de paquete para la simulacion (HUMBLE): https://docs.ros.org/en/humble/Tutorials/Advanced/Simulators/Webots.html
 
 ## Paquetes de ejemplo
 ### Simulación del turtlebot 3
@@ -77,27 +81,6 @@ ros2 action list
     - WEBOTS: Instrucciones en https://github.com/cyberbotics/webots_ros2/wiki/Navigate-TurtleBot3
         - Lanzar simulación con `ros2 launch webots_ros2_turtlebot robot_launch.py`
         - Mover robot básico con `ros2 topic pub -t 3 /cmd_vel geometry_msgs/msg/Twist '{linear: {x: 1.0, y: 0.0, z: 0.0}, angular: {x: 0.0, y: 0.0, z: 0}}`
-## Robótica industrial. MoveIt2
-### Instalación de MoveIt2
-No se instala con ROS2, hay que instalarlo aparte con:
-- ROS2 FOXY: sudo apt install ros-foxy-moveit
-Documentación oficial y tutoriales https://moveit.picknik.ai/foxy/index.html
-Curso ROS2 Industrial Training en FOXY: https://industrial-training-master.readthedocs.io/en/foxy/index.html#
-### Simulación del manipulador UR5e
-#### UR5e en Ignition Gazebo: 
-Repo en https://github.com/gezp/universal_robot_ign
-    - Problema: es para RO2 Galactic, no compila bien (error con ignition_transport10)
-    - Solución: mejor usar webots
-#### UR5e en Webots + planificación con MoveIt 2
-Repo en el github del propio desarrollador de Webots https://github.com/cyberbotics/webots_ros2/wiki/Example-Universal-Robots
-Más información en https://cyberbotics.com/doc/guide/ure
-1. UR5e en Webots sin RViz ni MoveIt: `ros2 launch webots_ros2_universal_robot robot_launch.py`
-    - Se lanzan 5 nodos: /UR5e, /controller_manager, /robot_state_publisher, /jount_state_broadcaster, /joint_trajectory_controller
-2. UR5e en Webots con RViz y MoveIt2: `ros2 launch webots_ros2_universal_robot moveit_demo_launch.py`
-3. UR5e + ABB en Webots: `ros2 launch webots_ros2_universal_robot multirobot_launch.py`
-
-Notas de uso: 
-1. Note: As MoveIt! seems to have difficulties with finding plans for the robot with full joint limits [-2pi, 2pi], there is a joint_limited version using joint limits restricted to [-pi,pi]. In order to use this joint limited version, simply use instead the ur5e_joint_limited launch file instead of the ur5e.launch one, i.e.: roslaunch ur_e_webots ur5e_joint_limited.launch
 
 
 ## TO DO LIST (as October 22)
