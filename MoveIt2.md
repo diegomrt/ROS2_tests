@@ -15,27 +15,34 @@ Recomendado instalar MOVEIT2 para HUMBLE, ya que a fecha de octubre 22 está má
 - Instalación del Panda y otras herramientas para los tutoriales básicos seghttps://moveit.picknik.ai/humble/doc/tutorials/getting_started/getting_started.html
   - Repo ws_moveit2. Se compila con `colcon build --mixin release`
 #### Tutoriales con el Franka Emika Panda  
-- ros2 launch moveit2_tutorials demo.launch.py rviz_tutorial:=true
+- Ejecutar el inicial con `ros2 launch moveit2_tutorials demo.launch.py rviz_tutorial:=true`
 
 ## Moveit2 con Python
 - moveit_commander (la interfaz en Python de move_group) está siendo desarrollada en el verano de 2022 para Humble
-- Comprobar estado. A 14 de octubre de 2022 no está operativa
+   - Comprobar estado. A 14 de octubre de 2022 no está operativa
 - Por el momento para trabajar con Python hay estos dos repositorios interesantes:
-1. PyMoveIt2: https://github.com/AndrejOrsula/pymoveit2
-2. https://github.com/AndrejOrsula/pymoveit2
+    1. PyMoveIt2: https://github.com/AndrejOrsula/pymoveit2
+    2. GEZP (parte del repo anterior): https://github.com/gezp/universal_robot_ign/blob/main/scripts/moveit2.py
 
 ## Simulación del manipulador UR5e
+### UR5e repo oficial Ignition Gazebo
+Repo oficial mantenido por Universal Robots: https://github.com/UniversalRobots/Universal_Robots_ROS2_Ignition_Simulation
+  - Recordatorio: instalación desde binarios Ignition Gazebo para FOXY con `sudo apt install ros-foxy-ros-ign`
+    - Versión "Citadel" para FOXY (más infor sobre versiones en https://github.com/gazebosim/ros_gz)   
+https://github.com/UniversalRobots/Universal_Robots_ROS2_Ignition_Simulation
 ### UR5e en Ignition Gazebo: 
 Repo en https://github.com/gezp/universal_robot_ign
-    - Problema: es para RO2 Galactic, no compila bien (error con ignition_transport10)
+    Recordar 
+    Problema: es para RO2 Galactic, no compila bien (error con ignition_transport10)
     - Solución: mejor usar webots
 ### UR5e en Webots + planificación con MoveIt 2
 Repo en el github del propio desarrollador de Webots https://github.com/cyberbotics/webots_ros2/wiki/Example-Universal-Robots
 Más información en https://cyberbotics.com/doc/guide/ure
-1. UR5e en Webots sin RViz ni MoveIt: `ros2 launch webots_ros2_universal_robot robot_launch.py`
+1. UR5e + ABB en Webots: `ros2 launch webots_ros2_universal_robot multirobot_launch.py`
+2. UR5e en Webots sin RViz ni MoveIt: `ros2 launch webots_ros2_universal_robot robot_launch.py`
     - Se lanzan 5 nodos: /UR5e, /controller_manager, /robot_state_publisher, /jount_state_broadcaster, /joint_trajectory_controller
-2. UR5e en Webots con RViz y MoveIt2: `ros2 launch webots_ros2_universal_robot moveit_demo_launch.py`
-3. UR5e + ABB en Webots: `ros2 launch webots_ros2_universal_robot multirobot_launch.py`
+3. UR5e en Webots con RViz y MoveIt2: `ros2 launch webots_ros2_universal_robot moveit_demo_launch.py`
+
 
 Notas de uso:
 14.10.22. Muchos más fallos de los esperados en HUMBLE
