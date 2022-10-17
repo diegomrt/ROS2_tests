@@ -64,7 +64,8 @@ ros2 action list
     - Test con `ign gazebo shapes.sdf`. OK!
 - Integración con ROS2 descrita en https://ignitionrobotics.org/docs/citadel/ros2_integration 
     - Instalación desde binarios con `sudo apt install ros-foxy-ros-ign*`
-    - Test básico (pendiente).   
+    - Demos disponibles en https://github.com/gazebosim/ros_gz/tree/ros2/ros_gz_sim_demos 
+       - Demo de cámara RGBD: `ros2 launch ros_ign_gazebo_demos rgbd_camera_bridge.launch.py`    
 ### Webots
 - Paquete de instalación para ROS2: https://github.com/cyberbotics/webots_ros2
     - Instalación con `sudo apt-get install ros-humble-webots-ros2`
