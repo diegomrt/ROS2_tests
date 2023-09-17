@@ -32,16 +32,24 @@ ros2 action list
 ```
 - Buscar paquetes instalados: `ros2 pkg list | grep paquete_en_busqueda`
 
-## Creación de paquetes
-- Siempre en el directorio src del workspace: `ros2 pkg create --build-type ament_python nombredelpaquete`
-
 ## COLCON (trabajo con workspaces en ROS2)
 - Documentación oficial en https://colcon.readthedocs.io/en/released/
 - Instalación colcon y extensiones: `sudo apt install python3-colcon-common-extensions`
 - Para hacer source de un colcon_ws: `source nombre_ws/install/setup.bash`
+### Autocomplete de COLCON:
+- Incluir en .bashrc `source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.bash`
 ### Build con COLCON
 - Instrucciones en https://docs.ros.org/en/foxy/Tutorials/Colcon-Tutorial.html
-- Uso básico: `colcon build --symlink-install`
+- Uso básico: `colcon build --symlink-install` (opción recomendada para usar código Python actualizado sin recompilar workspace)
+- Compilar paquetes seleccionados: `colcon build --packages-select nombre-del-paquete`
+
+## Creación de paquetes Python
+- En el directorio src del workspace: `ros2 pkg create nombredelpaquete --build-type ament_python --dependencies rclpy`
+- NOTA: a septiembre de 2023 la versión 58.6.0 de setuptools da problemas de compilación, hay que hacer un downgrade con:
+    - `pip3 install setuptools==58.2.0`
+ 
+## Creación de paquetes C++
+- En el directorio src del workspace: `ros2 pkg create nombredelpaquete --build-type ament_cmake --dependencies rclcpp`
 
 ## Instalación de paquetes básicos (ROS2 HUMBLE):
 - RVIZ:
@@ -84,5 +92,5 @@ ros2 action list
         - Mover robot básico con `ros2 topic pub -t 3 /cmd_vel geometry_msgs/msg/Twist '{linear: {x: 1.0, y: 0.0, z: 0.0}, angular: {x: 0.0, y: 0.0, z: 0}}`
 
 
-## TO DO LIST (as October 22)
+## TO DO LIST (as September 23)
 - Test ros1_bridge: https://github.com/ros2/ros1_bridge/blob/master/README.md
