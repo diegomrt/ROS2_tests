@@ -47,6 +47,7 @@ ros2 action list
 - En el directorio src del workspace: `ros2 pkg create nombredelpaquete --build-type ament_python --dependencies rclpy`
 - NOTA: a septiembre de 2023 la versión 58.6.0 de setuptools da problemas de compilación, hay que hacer un downgrade con:
     - `pip3 install setuptools==58.2.0`
+- INSTALL: para ue aparezcan al hacer `ros2 run paquete...` importante incluir información de entry_points en el fichero setup.py del paquete
  
 ## Creación de paquetes C++
 - En el directorio src del workspace: `ros2 pkg create nombredelpaquete --build-type ament_cmake --dependencies rclcpp`
@@ -83,6 +84,13 @@ ros2 action list
 - Tutorial creación de paquete para la simulacion (HUMBLE): https://docs.ros.org/en/humble/Tutorials/Advanced/Simulators/Webots.html
 
 ## Paquetes de ejemplo
+### Simulación del turtlebot 4 (HUMBLE)
+- Info e instalación en https://turtlebot.github.io/turtlebot4-user-manual/software/turtlebot4_simulator.html
+- Simulación: 
+    - GAZEBO:
+        - Instalar paquete simulación con `sudo apt install ros-humble-turtlebot4-simulator`
+        - Lanzar con `ros2 launch turtlebot4_ignition_bringup turtlebot4_ignition.launch.py`
+
 ### Simulación del turtlebot 3
 - Info e instalación en https://emanual.robotis.com/docs/en/platform/turtlebot3/simulation/#gazebo-simulation
 - Simulación: 
