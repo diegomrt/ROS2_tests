@@ -14,9 +14,15 @@ Recomendado instalar MOVEIT2 para HUMBLE, ya que está más desarrollado (Moveit
 ### Tutorial oficial MoveIt2 (HUMBLE) con el Franka Emika Panda 
 Seguir instrucciones completas de https://moveit.picknik.ai/humble/doc/tutorials/getting_started/getting_started.html
 - Hay que crear un repo (ws_moveit2_diego en mi caso) y clonar. Importante actualizar rosdep!!
-- Se descarga TODO MOVEIT2 (creo que esto no sería necesario si se tiene instalado desde binarios)
-- Se compila con `colcon build --mixin release`. Tarda mucho. En mi caso han sido necesarias tres pasadas para que termine los 55 paquetes
-- Ejecutar el inicial con `ros2 launch moveit2_tutorials demo.launch.py rviz_tutorial:=true`
+- Importante: al ejecutar `vcs import < moveit2_tutorials/moveit2_tutorials.repos` se descarga TODO MOVEIT2 (creo que esto no sería necesario si se tiene instalado desde binarios)
+- Se compila (todo MOVEIT2!) con `colcon build --mixin release`. Tarda mucho. En mi caso han sido necesarias tres pasadas para que termine los 55 paquetes
+- Source del repo con `source ~/ws_moveit2/install/setup.bash`.
+- Cambio de RMW a Cyclone DDS (había un problema con las DDS por defecto). Descargar y ´export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
+- IMPORTANTE: Si se lanza el tutorial inicial con `ros2 launch moveit2_tutorials demo.launch.py rviz_tutorial:=true` el robot Panda no aparece en RVIZ2, debido a un problema con las locales. 
+   - SOLUCION: Lanzarlo con `LC_NUMERIC=en_US.UTF-8 ros2 launch moveit2_tutorials demo.launch.py rviz_tutorial:=true`, FUNCIONA! (extraído de https://github.com/moveit/moveit2/issues/1049)
+
+#### DOCKER de Tutoriales oficiales
+Seguir instrucciones de https://moveit.picknik.ai/humble/doc/how_to_guides/how_to_setup_docker_containers_in_ubuntu.html
 
 ## Moveit2 con Python
 - moveit_commander (la interfaz en Python de move_group) está siendo desarrollada en el verano de 2022 para Humble
