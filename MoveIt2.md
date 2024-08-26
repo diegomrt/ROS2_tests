@@ -1,20 +1,21 @@
 # Robótica industrial con ROS2 y MoveIt2
 
-## Instalación de MoveIt2
+## Instalación de MoveIt2 desde binarios
 No se instala con ROS2, hay que instalarlo aparte.
-Recomendado instalar MOVEIT2 para HUMBLE, ya que a fecha de octubre 22 está más desarrollado (Moveitconfig, soporte MOveitCommander python)
+Recomendado instalar MOVEIT2 para HUMBLE, ya que está más desarrollado (Moveitconfig, soporte MOveitCommander python -comprobar-)
 - ROS2 HUMBLE: `sudo apt install ros-humble-moveit`
 - ROS2 FOXY: `sudo apt install ros-foxy-moveit`
 
-## Documentación y tutoriales
+## Documentación y tutoriales oficiales
 - Documentación oficial y tutoriales (HUMBLE): https://moveit.picknik.ai/humble/index.html
 - Documentación oficial y tutoriales (FOXY): https://moveit.picknik.ai/foxy/index.html
 - Curso ROS2 Industrial Training (únicamente en FOXY): https://industrial-training-master.readthedocs.io/en/foxy/index.html#
 
-### Tutoriales uso MoveIt2 
-- Instalación del Panda y otras herramientas para los tutoriales básicos seghttps://moveit.picknik.ai/humble/doc/tutorials/getting_started/getting_started.html
-  - Repo ws_moveit2. Se compila con `colcon build --mixin release`
-#### Tutoriales con el Franka Emika Panda  
+### Tutorial oficial MoveIt2 (HUMBLE) con el Franka Emika Panda 
+Seguir instrucciones completas de https://moveit.picknik.ai/humble/doc/tutorials/getting_started/getting_started.html
+- Hay que crear un repo (ws_moveit2_diego en mi caso) y clonar. Importante actualizar rosdep!!
+- Se descarga TODO MOVEIT2 (creo que esto no sería necesario si se tiene instalado desde binarios)
+- Se compila con `colcon build --mixin release`. Tarda mucho. En mi caso han sido necesarias tres pasadas para que termine los 55 paquetes
 - Ejecutar el inicial con `ros2 launch moveit2_tutorials demo.launch.py rviz_tutorial:=true`
 
 ## Moveit2 con Python
