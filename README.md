@@ -1,5 +1,5 @@
 # ROS2: tests, pruebas y comandos básicos
-Pruebas, comandos básicos y ejemplos de ROS2 Galactic para Ubuntu 20.04 focal. 
+Pruebas, comandos básicos y ejemplos de ROS2 Galactic/Foxy/Humble para Ubuntu 20.04 (Galactic/Foxy) y 22.04 (Humble). 
 
 *Nota*: En diciembre de 2021 hay dos versiones soportadas: ROS2 FOXY y ROS2 GALACTIC. Los ejemplos son para FOXY (tiene más paquetes por el momento)
 
@@ -79,11 +79,11 @@ ros2 action list
 - Paquete de instalación para ROS2: https://github.com/cyberbotics/webots_ros2
     - Instalación con `sudo apt-get install ros-humble-webots-ros2`
     - Ejecución básica de test: `ros2 launch webots_ros2_universal_robot multirobot_launch.py`
-        - La primera vez pide descargar y ejecutar webots R2022a (octubre 2022)
+        - La primera vez pide descargar y ejecutar webots R2022a (a octubre de 2022)
 - Listado de robots incluidos en https://cyberbotics.com/doc/guide/robots 
 - Tutorial creación de paquete para la simulacion (HUMBLE): https://docs.ros.org/en/humble/Tutorials/Advanced/Simulators/Webots.html
 
-## Paquetes de ejemplo
+## Simulación de robots TURTLEBOT (3 y 4)
 ### Simulación del turtlebot 4 (HUMBLE)
 - Info e instalación en https://turtlebot.github.io/turtlebot4-user-manual/software/turtlebot4_simulator.html
 - Simulación: 
@@ -99,6 +99,5 @@ ros2 action list
         - Lanzar simulación con `ros2 launch webots_ros2_turtlebot robot_launch.py`
         - Mover robot básico con `ros2 topic pub -t 3 /cmd_vel geometry_msgs/msg/Twist '{linear: {x: 1.0, y: 0.0, z: 0.0}, angular: {x: 0.0, y: 0.0, z: 0}}`
 
-
-## TO DO LIST (as September 23)
+## TO DO LIST (as August 24)
 - Test ros1_bridge: https://github.com/ros2/ros1_bridge/blob/master/README.md
