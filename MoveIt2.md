@@ -43,15 +43,35 @@ Si se quiere trabajar sobre contenedir, seguir instrucciones de https://moveit.p
 - Curso ROS2 Industrial Training (únicamente en FOXY): https://industrial-training-master.readthedocs.io/en/foxy/index.html#
 
 ## Moveit2 con Python
-moveit_commander (la interfaz en Python de move_group) está supuestamente lista desde el 28 de abril de 2023 (fue desarrollada en el verano de 2022 para Humble):
+### API oficial moveit_py (sólo ROS2 IRON y sucesivos)
+moveit_commander (la interfaz en Python de move_group) está supuestamente lista desde el 28 de abril de 2023 (fue desarrollada en el verano de 2022):
 - https://picknik.ai/moveit/ros/python/google/2023/04/28/GSOC-MoveIt-2-Python-Bindings.html
-   - Comprobar estado. A 14 de octubre de 2022 no estaba operativa
-- Aparte, para trabajar con Python hay estos dos repositorios interesantes:
-    1. PyMoveIt2: es un proyecto vivo que está operativo para Humble, Galactic e Iron!
+   - Según una issue de los tutoriales de Moveit2 (https://github.com/moveit/moveit2_tutorials/issues/884) de agosto de 2024, los bindings de python NO ESTÁN DISPONIBLES EN HUMBLE, sólo en ROS2 IRON y sucesivos! (JAZZY, etc).
+   - Hay tutorial!: https://moveit.picknik.ai/main/doc/examples/motion_planning_python_api/motion_planning_python_api_tutorial.html
+
+### Alternativas para ROS2 HUMBLE
+#### PyMoveIt2
+PyMoveIt2: es un proyecto vivo que está operativo para Humble, Galactic e Iron!
        - https://github.com/AndrejOrsula/pymoveit2
-    3. GEZP (parte del repo anterior): https://github.com/gezp/universal_robot_ign/blob/main/scripts/moveit2.py
+#### GEZP
+Es parte del repo de PyMoveIt2. Más info en https://github.com/gezp/universal_robot_ign/blob/main/scripts/moveit2.py
 
 ## Simulación del manipulador UR5e
+### UR5e en Webots + planificación con MoveIt 2
+Repo en el github del propio desarrollador de Webots https://github.com/cyberbotics/webots_ros2/wiki/Example-Universal-Robots
+Actualizado para HUMBLE en agosto de 2024: 
+1. UR5e + RVIz + MoveIt2:
+   - Lanzar simulación del mundo webots con `ros2 launch webots_ros2_universal_robot robot_world_launch.py`
+   - Lanzar robot + RViz + MoveIt2 con `LC_NUMERIC=en_US.UTF-8  ros2 launch webots_ros2_universal_robot robot_moveit_nodes_launch.py`
+      - Nota: `LC_NUMERIC=en_US.UTF-8` sólo si error de tipo de datos en velocidades
+
+(Antiguo) Más información en https://cyberbotics.com/doc/guide/ure
+1. UR5e + ABB en Webots: `ros2 launch webots_ros2_universal_robot multirobot_launch.py`
+    - Simulada incluso una cinta transportadora
+3. UR5e en Webots sin RViz ni MoveIt: `ros2 launch webots_ros2_universal_robot robot_launch.py`
+    - Se lanzan 5 nodos: /UR5e, /controller_manager, /robot_state_publisher, /jount_state_broadcaster, /joint_trajectory_controller
+4. UR5e en Webots con RViz y MoveIt2: `ros2 launch webots_ros2_universal_robot moveit_demo_launch.py`
+5. 
 ### UR5e repo oficial Ignition Gazebo
 Repo oficial mantenido por Universal Robots: https://github.com/UniversalRobots/Universal_Robots_ROS2_Ignition_Simulation
   - Recordatorio: instalación desde binarios Ignition Gazebo para FOXY con `sudo apt install ros-foxy-ros-ign`
@@ -62,15 +82,6 @@ CONCLUSIÓN: la simulación está verde, y además sigue habiendo problemas de g
 Repo en https://github.com/gezp/universal_robot_ign
     - Problema: es para RO2 Galactic, no compila bien (error con ignition_transport10)
     - Solución: mejor usar webots
-    
-### UR5e en Webots + planificación con MoveIt 2
-Repo en el github del propio desarrollador de Webots https://github.com/cyberbotics/webots_ros2/wiki/Example-Universal-Robots
-Más información en https://cyberbotics.com/doc/guide/ure
-1. UR5e + ABB en Webots: `ros2 launch webots_ros2_universal_robot multirobot_launch.py`
-    - Simulada incluso una cinta transportadora
-3. UR5e en Webots sin RViz ni MoveIt: `ros2 launch webots_ros2_universal_robot robot_launch.py`
-    - Se lanzan 5 nodos: /UR5e, /controller_manager, /robot_state_publisher, /jount_state_broadcaster, /joint_trajectory_controller
-4. UR5e en Webots con RViz y MoveIt2: `ros2 launch webots_ros2_universal_robot moveit_demo_launch.py`
 
 #### CONSTRUCCIÓN DE ESCENA CON UR5 Y CÁMARA RGB Ó RGBD
 Idea: generar un paquete con un mundo similar al de los 2 robots. Eliminar ABB e incluir una cámara. hacer movimientos simples con moveit
