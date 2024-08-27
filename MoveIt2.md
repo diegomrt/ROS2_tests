@@ -53,6 +53,16 @@ moveit_commander (la interfaz en Python de move_group) está supuestamente lista
 #### PyMoveIt2
 PyMoveIt2: es un proyecto vivo que está operativo para Humble, Galactic e Iron!
        - https://github.com/AndrejOrsula/pymoveit2
+TEST CON ROBOT PANDA (agosto 24): Los siguientes scripts funcionan todos:
+   1. Clonar repo y compilar siguiendo https://github.com/AndrejOrsula/pymoveit2?tab=readme-ov-file#instructions
+   2. Lanzar la demo del Panda con `LC_NUMERIC=en_US.UTF-8 ros2 launch moveit2_tutorials demo.launch.py`
+   3. En la carpeta "robots", modificar los nombres de los grupos para el Panda (MOVE_GROUP_ARM: str = "panda_arm") y (MOVE_GROUP_GRIPPER: str = "hand"). Es Python, no hace falta recompilar
+   4. Lanzar los ejemplos (funcionan todos):
+      - Cinemática directa con `ros2 run pymoveit2 ex_joint_goal.py --ros-args -p joint_positions:="[1.57, -1.57, 0.0, -1.57, 0.0, 1.57, 0.7854]"`
+      - Cinemática inversa con `ros2 run pymoveit2 ex_pose_goal.py --ros-args -p position:="[0.25, 0.0, 1.0]" -p quat_xyzw:="[0.0, 0.0, 0.0, 1.0]" -p cartesian:=False`. Para movimiento lineal usar True
+      - Accionamiento del gripper con `ros2 run pymoveit2 ex_gripper.py --ros-args -p action:="toggle"`. Las posiciones de abrir y cerrar van codificadas en el archivo panda.py de la carpeta robots (OPEN_GRIPPER_JOINT_POSITIONS: List[float] = [0.04, 0.04]) y (CLOSED_GRIPPER_JOINT_POSITIONS: List[float] = [0.0, 0.0])
+      - Objetos en escena con `ros2 run pymoveit2 ex_collision_primitive.py --ros-args -p shape:="sphere" -p position:="[0.5, 0.0, 0.5]" -p dimensions:="[0.2]"`
+
 #### GEZP
 Es parte del repo de PyMoveIt2. Más info en https://github.com/gezp/universal_robot_ign/blob/main/scripts/moveit2.py
 
