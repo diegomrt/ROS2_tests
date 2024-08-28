@@ -42,7 +42,14 @@ Clave para entender el proceso completo de creación de un ws para código C++
 - Si no hay fallos hacer source con `source install/setup.bash` y ejecutar con `ros2 run hello_moveit hello_moveit`
 
 ### 6. TUTORIAL "Pick and place with Moveit Task Constructor"
-Clave para entender el proceso comp
+El MoveIt Task Constructor permite crear y ejecutar programas complejos, formados por múltiples tareas. Es muy potente pero complejo de entender y sólo está disponible en C++. Pero funciona muy bien: 
+- Subo repo "mtc_tutorial" con el ejemplo completo y operativo:
+- Para ejecutar:
+  1. Lanzar simulación con `LC_NUMERIC=en_US.UTF-8 ros2 launch mtc_tutorial mtc_demo.launch.py`
+  2. Ejecutar pick and place con `ros2 launch mtc_tutorial pick_place_demo.launch.py`
+- Estudiar en profundidad la funcionalidad, desde los siguientes enlaces:
+  1. Tutorial en https://moveit.picknik.ai/humble/doc/tutorials/pick_and_place_with_moveit_task_constructor/pick_and_place_with_moveit_task_constructor.html
+  2. API en https://moveit.picknik.ai/humble/doc/examples/moveit_task_constructor/moveit_task_constructor_tutorial.html
 
 #### DOCKER para Tutoriales oficiales
 Si se quiere trabajar sobre contenedir, seguir instrucciones de https://moveit.picknik.ai/humble/doc/how_to_guides/how_to_setup_docker_containers_in_ubuntu.html
