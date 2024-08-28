@@ -6,6 +6,11 @@ Recomendado instalar MOVEIT2 para HUMBLE, ya que está más desarrollado (Moveit
 - ROS2 HUMBLE: `sudo apt install ros-humble-moveit`
 - ROS2 FOXY: `sudo apt install ros-foxy-moveit`
 
+Nota (agosto 2024): La versión de MoveIt2 para HUMBLE ya no se está desarrollando:
+      - You're reading the documentation for a stable version of MoveIt that is not being developed further. For information on the recommended version, please have a look at Main. 
+
+La versión recomendada en agosto de 2024 ya es IRON (https://moveit.picknik.ai/main/doc/tutorials/getting_started/getting_started.html)
+
 ## Tutoriales oficiales MoveIt2 (HUMBLE) con el Franka Emika Panda 
 Documentación oficial y tutoriales (HUMBLE): https://moveit.picknik.ai/humble/index.html
 Hay 6 tutoriales oficiales, todos recomendables como toma de contacto: 
@@ -35,6 +40,9 @@ Clave para entender el proceso completo de creación de un ws para código C++
 - https://moveit.picknik.ai/humble/doc/tutorials/your_first_project/your_first_project.html
 - Al recompilar con `colcon build --mixin debug` a veces se recompilan algunos de los otros repos. Si falla tratar de volver a recompilar
 - Si no hay fallos hacer source con `source install/setup.bash` y ejecutar con `ros2 run hello_moveit hello_moveit`
+
+### 6. TUTORIAL "Pick and place with Moveit Task Constructor"
+Clave para entender el proceso comp
 
 #### DOCKER para Tutoriales oficiales
 Si se quiere trabajar sobre contenedir, seguir instrucciones de https://moveit.picknik.ai/humble/doc/how_to_guides/how_to_setup_docker_containers_in_ubuntu.html
